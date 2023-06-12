@@ -1,0 +1,40 @@
+{% extends 'crudProject/base.html' %}
+
+{% block content %}
+{% load static %}
+<section id="main">
+<div class="form">
+<h1>Modification des Skills</h1>
+<section id="skills" class="skills section-bg">
+    
+    <div class="row skills-content">
+
+        <div class="col-lg-6" data-aos="fade-up">
+{% for i in dataSkills %}
+
+ <div class="progress">
+    <span class="skill">{{i.name}} <i class="val">{{i.value}}</i></span>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar" role="progressbar" aria-valuenow={{i.value}} aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
+<div/>
+<form action="/skills/destroy/{{ i.id }}" method='POST'>
+    {% csrf_token %}
+    <button type="submit" class="btn btn-outline-danger">Delete</button>
+</form>
+{% endfor %}
+<div/>
+<div/>
+<h2>Add</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{form}}
+        <button type='submit'>Envoyer</button>
+    </form>
+</div>
+</section>
+{% endblock content %}
+
+
+

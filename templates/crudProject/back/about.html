@@ -1,0 +1,16 @@
+{% extends 'crudProject/base.html' %}
+
+{% block content %}
+{% load static %}
+<section id="main">
+<div class="form">
+<h1>Modifié section About</h1>
+<h2>Uptade</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Update</button>
+</form>
+</div>
+</section>
+{% endblock content %}

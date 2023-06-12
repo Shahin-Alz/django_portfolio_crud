@@ -1,0 +1,16 @@
+{% extends 'crudProject/base.html' %}
+
+{% block content %}
+<section id="main">
+    <div class='allsection'>
+<h1>All Section </h1>
+<a href= {% url 'update' %}> About</a>
+<a href= {% url 'skills' %}> Skills</a>
+<a href= {% url 'portfolio' %}> Portfolio</a>
+<a href= {% url 'services' %}> Services </a>
+<a href= {% url 'testimonial' %}> Testimonial </a>
+<a href= {% url 'contact' %}> Contact </a>
+</div>
+</section>
+
+{% endblock content %}

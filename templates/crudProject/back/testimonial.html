@@ -1,0 +1,57 @@
+{% extends 'crudProject/base.html' %} {% block content %} {% load static %}
+
+<section id="main">
+  
+  <h1>Modification Testimonial</h1>
+
+  <section id="testimonials" class="testimonials section-bg">
+    <div class="container">
+      <div class="section-title">
+        <h2>Add</h2>
+        <a href={% url 'newTestimonial' %} class='btn btn-outline-success'>add Testimonial</a>
+
+        <h2>Testimonials</h2>
+        <p>
+          Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex
+          aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos
+          quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia
+          fugiat sit in iste officiis commodi quidem hic quas.
+        </p>
+      </div>
+
+      <div
+        class="testimonials-slider swiper"
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+      
+        <div class="swiper-wrapper">
+
+
+            {% for i in dataTestimonial %}
+          <div class="swiper-slide">
+            <div class="testimonial-item" data-aos="fade-up">
+              <p>
+                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                {{i.description}}
+                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+              </p>
+              <img src={{i.photo}} class="testimonial-img"alt=""/>
+              <h3>{{i.name}}</h3>
+              <h4>{{i.title}}</h4>
+            </div>
+          </div>
+          <form action="/testimonial/destroy/{{ i.id }}" method='POST'>
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-danger">Delete</button>
+        </form>
+          {% endfor %}
+
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+  <!-- End Testimonials Section -->
+</section>
+{% endblock content %}
